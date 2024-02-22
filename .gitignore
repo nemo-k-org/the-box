@@ -1,0 +1,4 @@
+build-docker
+push-docker
+artefacts/
+temp/
