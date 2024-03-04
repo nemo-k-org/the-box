@@ -1,4 +1,4 @@
-BOX_VERSION=0.0.1
+BOX_VERSION=0.0.2
 PWD:=$(shell pwd)
 
 .PHONY: build-docker
