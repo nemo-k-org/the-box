@@ -11,10 +11,16 @@ cd firmware
 make build
 
 mkdir temp-artefacts/
-cp .pio/build/wemosd1/firmware.bin temp-artefacts/
+cp .pio/build/esp01/firmware.bin temp-artefacts/
 cd temp-artefacts/
 sha256sum firmware.bin >firmware.bin.sha256
-zip nemo-k-firmware firmware.bin firmware.bin.sha256
+
+if [ -z $NEMOK_ZIP_PASSWORD ]; then
+    7z a -tzip nemo-k-firmware.zip firmware.bin firmware.bin.sha256
+else
+    7z a -tzip -mem=AES256 -p$NEMOK_ZIP_PASSWORD nemo-k-firmware.zip firmware.bin firmware.bin.sha256
+fi
+
 cd ..
 
 if [ -z $NEMOK_UPLOAD_URL ]; then

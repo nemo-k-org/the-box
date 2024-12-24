@@ -12,7 +12,7 @@ RUN pip install -U platformio==${PLATFORMIO_VERSION} && \
     chmod a+rwx /workspace && \
     mkdir -p /.platformio && \
     chmod a+rwx /.platformio && \
-    apt update && apt install -y git make zip curl && apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log}/
+    apt update && apt install -y git make p7zip-full curl && apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 COPY init-project/ /workspace/init-project/
 RUN cd /workspace/init-project/ && platformio run 
